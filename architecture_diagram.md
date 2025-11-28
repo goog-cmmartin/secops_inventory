@@ -7,7 +7,7 @@ This document provides a high-level overview of the application's architecture u
 ```mermaid
 graph TD
     subgraph "User Interface (Browser)"
-        A[<fa:fa-user> User] --> B{Jinja2 Templates <br> (Modularized)};
+        A[<fa:fa-user> User] --> B{"Jinja2 Templates <br> (Modularized)"};
         B --> B1[Home / Dashboard];
         B --> B2[Tenants, Audits, etc.];
     end
