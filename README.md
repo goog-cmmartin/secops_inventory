@@ -4,6 +4,8 @@ The **SecOps Inventory & Intelligence Platform** is a web-based application desi
 
 The platform provides a centralized inventory, a dynamic and extensible audit engine, a powerful AI-driven reporting system using **Gemini 2.5 Pro**, and an interactive AI assistant to help security professionals transform raw configuration data into actionable intelligence.
 
+![Home Page Screenshot](home_page.png)
+
 ![Architecture Diagram](architecture_diagram.md)
 
 ## Features
