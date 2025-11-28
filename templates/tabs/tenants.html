@@ -1,0 +1,57 @@
+<div
+  class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+  id="tenants"
+  role="tabpanel"
+  aria-labelledby="tenants-tab"
+>
+  <div
+    id="db-status"
+    class="mb-4 p-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
+    role="alert"
+  >
+    Checking database status...
+  </div>
+
+  <div class="flex items-center justify-between mb-4">
+    <div class="flex-grow mr-4">
+      <label for="tenant-filter-input" class="sr-only">Filter tenants</label>
+      <input
+        type="text"
+        id="tenant-filter-input"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="Filter tenants by name or ID..."
+      />
+    </div>
+    <div class="flex-shrink-0 flex items-center">
+      <input
+        id="show-configured-only-checkbox"
+        type="checkbox"
+        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+      />
+      <label
+        for="show-configured-only-checkbox"
+        class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+        >Show Configured Tenants Only</label
+      >
+    </div>
+  </div>
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table
+      class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+    >
+      <thead
+        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+      >
+        <tr>
+          <th scope="col" class="px-6 py-3">Project Name</th>
+          <th scope="col" class="px-6 py-3">Project ID</th>
+          <th scope="col" class="px-6 py-3">API Status</th>
+          <th scope="col" class="px-6 py-3">Action</th>
+        </tr>
+      </thead>
+      <tbody id="tenants-table">
+        <!-- Tenant rows will be inserted here -->
+      </tbody>
+    </table>
+  </div>
+</div>

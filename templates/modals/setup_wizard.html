@@ -1,0 +1,129 @@
+<div
+  id="setup-wizard-modal"
+  tabindex="-1"
+  aria-hidden="true"
+  class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-full max-h-full bg-gray-900 bg-opacity-50"
+>
+  <div class="relative p-4 w-full max-w-2xl max-h-full">
+    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+      <!-- Step 1: Welcome -->
+      <div id="wizard-step-1" class="p-4 md:p-5 text-center">
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+          Welcome to the SecOps Inventory Platform
+        </h3>
+        <p class="mb-6 text-gray-600 dark:text-gray-400">
+          It looks like this is your first time running the application.
+          Let's get things set up.
+        </p>
+        <button
+          type="button"
+          onclick="runDbInitialization()"
+          class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+        >
+          Begin Setup
+        </button>
+      </div>
+      <!-- Step 2: Tenant Discovery -->
+      <div id="wizard-step-2" class="hidden p-4 md:p-5">
+        <h3
+          class="text-xl font-semibold text-gray-900 dark:text-white mb-4"
+        >
+          Tenant Setup
+        </h3>
+        <p class="mb-4 text-gray-600 dark:text-gray-400">
+          How would you like to add your SecOps tenants?
+        </p>
+
+        <div class="p-4 border rounded-lg dark:border-gray-600 mb-4">
+          <h4 class="font-semibold mb-2">Automatic Discovery</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
+            Enter a GCP Organization ID to automatically discover all
+            projects with the Chronicle API enabled.
+          </p>
+          <div class="flex items-center space-x-2">
+            <input
+              type="text"
+              id="organization-id-input"
+              class="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5"
+              placeholder="Your GCP Organization ID"
+            />
+            <button
+              type="button"
+              onclick="runTenantDiscovery()"
+              class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+            >
+              Discover
+            </button>
+          </div>
+        </div>
+
+        <div class="p-4 border rounded-lg dark:border-gray-600">
+          <h4 class="font-semibold mb-2">Manual Entry</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
+            Add a single tenant by providing its GCP Project ID and a
+            display name.
+          </p>
+          <form id="manual-tenant-form" class="space-y-3">
+            <input
+              type="text"
+              id="manual-project-id"
+              class="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5"
+              placeholder="GCP Project ID"
+              required
+            />
+            <input
+              type="text"
+              id="manual-display-name"
+              class="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5"
+              placeholder="Display Name"
+              required
+            />
+            <button
+              type="submit"
+              class="text-white bg-gray-600 hover:bg-gray-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+            >
+              Add Tenant
+            </button>
+          </form>
+        </div>
+      </div>
+      <!-- Step 3: Progress/Completion -->
+      <div id="wizard-step-3" class="hidden p-4 md:p-5 text-center">
+        <h3
+          class="text-xl font-semibold text-gray-900 dark:text-white mb-4"
+        >
+          Setup in Progress...
+        </h3>
+        <div
+          id="wizard-progress-indicator"
+          role="status"
+          class="flex justify-center items-center mb-4"
+        >
+          <svg
+            aria-hidden="true"
+            class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+            viewBox="0 0 100 101"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            ...
+          </svg>
+        </div>
+        <p
+          id="wizard-status-message"
+          class="text-gray-600 dark:text-gray-400"
+        >
+          Please wait while we set things up.
+        </p>
+        <button
+          id="wizard-finish-button"
+          type="button"
+          onclick="window.location.reload()"
+          class="hidden mt-4 text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+        >
+          Finish & Reload
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

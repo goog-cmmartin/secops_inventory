@@ -1,0 +1,87 @@
+<div
+  class="p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+  id="home"
+  role="tabpanel"
+  aria-labelledby="home-tab"
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+    <!-- Tenants Card -->
+    <div class="p-6 bg-white border border-gray-200 rounded-lg shadow cursor-pointer hover:bg-gray-100 dark:bg-gray-700 dark:border-gray-600 dark:hover:bg-gray-600" onclick="document.getElementById('tenants-tab').click()">
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Tenants</h5>
+      <div class="font-normal text-gray-700 dark:text-gray-400">
+        <p>Total: <span id="dash-tenants-total" class="font-semibold">Loading...</span></p>
+        <p class="text-green-600 dark:text-green-400">Configured: <span id="dash-tenants-configured">...</span></p>
+        <p class="text-red-600 dark:text-red-400">Unconfigured: <span id="dash-tenants-unconfigured">...</span></p>
+      </div>
+    </div>
+
+    <!-- Audits Card -->
+    <div class="p-6 bg-white border border-gray-200 rounded-lg shadow cursor-pointer hover:bg-gray-100 dark:bg-gray-700 dark:border-gray-600 dark:hover:bg-gray-600" onclick="document.getElementById('audits-tab').click()">
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Audits</h5>
+      <div class="font-normal text-gray-700 dark:text-gray-400">
+        <p>Available Definitions: <span id="dash-audits-total" class="font-semibold">Loading...</span></p>
+        <p>Total Runs Performed: <span id="dash-audits-runs">...</span></p>
+      </div>
+    </div>
+
+    <!-- Insights Card -->
+    <div class="p-6 bg-white border border-gray-200 rounded-lg shadow cursor-pointer hover:bg-gray-100 dark:bg-gray-700 dark:border-gray-600 dark:hover:bg-gray-600" onclick="document.getElementById('insights-tab').click()">
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Insights</h5>
+      <div class="font-normal text-gray-700 dark:text-gray-400">
+        <p>Active Templates: <span id="dash-insights-total" class="font-semibold">Loading...</span></p>
+      </div>
+    </div>
+
+    <!-- Schedules Card -->
+    <div class="p-6 bg-white border border-gray-200 rounded-lg shadow cursor-pointer hover:bg-gray-100 dark:bg-gray-700 dark:border-gray-600 dark:hover:bg-gray-600" onclick="document.getElementById('schedules-tab').click()">
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Schedules</h5>
+      <div class="font-normal text-gray-700 dark:text-gray-400">
+        <p>Total Configured: <span id="dash-schedules-total" class="font-semibold">Loading...</span></p>
+        <p class="text-green-600 dark:text-green-400">Active: <span id="dash-schedules-active">...</span></p>
+        <p class="text-sm mt-2 text-gray-500">Last Run: <span id="dash-schedules-last-run">Never</span></p>
+      </div>
+    </div>
+
+    <!-- Settings Stats Card -->
+    <div class="p-6 bg-white border border-gray-200 rounded-lg shadow cursor-pointer hover:bg-gray-100 dark:bg-gray-700 dark:border-gray-600 dark:hover:bg-gray-600 lg:col-span-2" onclick="document.getElementById('settings-tab').click()">
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Configuration Stats</h5>
+      <div class="grid grid-cols-3 gap-4 font-normal text-gray-700 dark:text-gray-400">
+        <div>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Custom LLM Prompts</p>
+          <p id="dash-settings-prompts" class="text-xl font-semibold">...</p>
+        </div>
+        <div>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Custom YL2 Queries</p>
+          <p id="dash-settings-yl2" class="text-xl font-semibold">...</p>
+        </div>
+        <div>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Configurable Audits</p>
+          <p id="dash-settings-audits" class="text-xl font-semibold">...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Reports Section -->
+  <div class="p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-700 dark:border-gray-600">
+    <div class="flex justify-between items-center mb-4">
+      <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Recent Reports</h5>
+      <a href="#" onclick="document.getElementById('reports-tab').click()" class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
+        View all
+      </a>
+    </div>
+    <div class="flow-root">
+      <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700" id="dash-recent-reports-list">
+        <li class="py-3 sm:py-4">
+          <div class="flex items-center space-x-4">
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                Loading recent reports...
+              </p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

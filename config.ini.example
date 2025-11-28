@@ -1,0 +1,6 @@
+[gemini]
+model_name = gemini-2.5-flash
+max_tokens_per_chunk = 900000
+final_max_output_tokens = 65536
+map_max_output_tokens = 20000
+block_safety_filters = true

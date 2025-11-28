@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.pytest_cache/
+
+# Node.js
+node_modules/
+# package-lock.json # Often committed, uncomment if you prefer to ignore it
+
+# Database
+gcp_inventory.db
+*.bak
+*.bak*
+audit_backup.json
+
+# Configuration
+config.ini
+
+# Logs
+*.log
+server.log
+celerybeat-schedule
+celerybeat-schedule-shm
+celerybeat-schedule-wal
+
+# Environment variables
+.env
+.flaskenv
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Gemini CLI specific temporary directory
+.gemini/

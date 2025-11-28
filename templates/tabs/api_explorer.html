@@ -1,0 +1,75 @@
+<div
+  class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+  id="api-explorer"
+  role="tabpanel"
+  aria-labelledby="api-explorer-tab"
+>
+  <select
+    id="tenant-select"
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-4"
+  >
+    <option selected>Choose a tenant</option>
+  </select>
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+    <div class="md:col-span-1">
+      <label
+        for="api-method"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Method</label
+      >
+      <select
+        id="api-method"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      >
+        <option>GET</option>
+        <option>POST</option>
+        <option>PUT</option>
+        <option>DELETE</option>
+      </select>
+    </div>
+    <div class="md:col-span-3">
+      <label
+        for="api-path"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >API Path</label
+      >
+      <input
+        type="text"
+        id="api-path"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+        placeholder="v1alpha/..."
+      />
+    </div>
+    <div class="md:col-span-4">
+      <label
+        for="api-json"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >JSON Body (for POST/PUT)</label
+      >
+      <textarea
+        id="api-json"
+        rows="4"
+        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300"
+      ></textarea>
+    </div>
+    <div class="md:col-span-4">
+      <button
+        type="button"
+        onclick="handleApiRequest()"
+        class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+      >
+        Send Request
+      </button>
+    </div>
+    <div class="md:col-span-4">
+      <label
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Response</label
+      >
+      <pre
+        id="api-response"
+        class="bg-gray-900 text-white text-sm p-4 rounded-lg overflow-x-auto"
+      ><code></code></pre>
+    </div>
+  </div>
+</div>

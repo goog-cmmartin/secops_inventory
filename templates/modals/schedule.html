@@ -1,0 +1,84 @@
+<div id="schedule-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-full max-h-full">
+  <div class="relative p-4 w-full max-w-2xl max-h-full">
+      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <div class="flex items-center justify-between p-4 border-b rounded-t">
+              <h3 id="schedule-modal-title" class="text-xl font-semibold text-gray-900 dark:text-white">
+                  Create Schedule
+              </h3>
+              <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="schedule-modal">
+                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/></svg>
+                  <span class="sr-only">Close modal</span>
+              </button>
+          </div>
+          <div class="p-4 space-y-4">
+        <form id="schedule-form">
+                  <input type="hidden" id="schedule-id" name="id">
+        <div class="grid gap-6 mb-6 md:grid-cols-2">
+          <div>
+            <label for="schedule-name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Schedule Name</label>
+            <input type="text" id="schedule-name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="e.g., Daily Chronicle Audit" required>
+          </div>
+          <div>
+            <label for="schedule-tenant" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tenant</label>
+            <select id="schedule-tenant" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" required>
+              <!-- Options populated by JS -->
+            </select>
+          </div>
+        </div>
+
+        <div class="mb-6">
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Schedule Type</label>
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center">
+                    <input id="schedule-type-audit" type="radio" value="audit" name="schedule-type" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600" checked>
+                    <label for="schedule-type-audit" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Run Audits</label>
+                </div>
+                <div class="flex items-center">
+                    <input id="schedule-type-report" type="radio" value="report" name="schedule-type" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600">
+                    <label for="schedule-type-report" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Generate Report</label>
+                </div>
+                <div class="flex items-center">
+                    <input id="schedule-type-diff" type="radio" value="diff" name="schedule-type" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600">
+                    <label for="schedule-type-diff" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Run Diff</label>
+                </div>
+            </div>
+        </div>
+
+        <div id="report-name-format-group" class="mb-6 hidden">
+            <label for="schedule-report-name-format" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Report Name Format</label>
+            <input type="text" id="schedule-report-name-format" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600" placeholder="e.g., Weekly Report - {date}">
+            <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Use {date} and {time} as placeholders.</p>
+        </div>
+
+        <div class="mb-6">
+          <label for="schedule-audits" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Audits to Include</label>
+          <select id="schedule-audits" multiple placeholder="Select audits..." autocomplete="off" class="block w-full" required>
+            <!-- Options populated by JS -->
+          </select>
+        </div>
+        <div class="mb-6">
+          <label for="schedule-cron" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cron Schedule</label>
+          <input type="text" id="schedule-cron" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg font-mono focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600" placeholder="* * * * *" required>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-2">
+            Quick presets:
+            <button type="button" class="text-blue-600 dark:text-blue-500 hover:underline" onclick="setCronValue('0 * * * *')">Hourly</button> |
+            <button type="button" class="text-blue-600 dark:text-blue-500 hover:underline" onclick="setCronValue('0 0 * * *')">Daily</button> |
+            <button type="button" class="text-blue-600 dark:text-blue-500 hover:underline" onclick="setCronValue('0 0 * * 0')">Weekly</button> |
+            <button type="button" class="text-blue-600 dark:text-blue-500 hover:underline" onclick="setCronValue('0 0 1 * *')">Monthly</button>
+          </div>
+        </div>
+        <div class="flex items-start mb-6">
+          <div class="flex items-center h-5">
+            <input id="schedule-enabled" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600" checked>
+          </div>
+          <label for="schedule-enabled" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Enable Schedule</label>
+        </div>
+      </form>
+          </div>
+          <div class="flex items-center p-4 border-t border-gray-200 rounded-b">
+              <button type="button" onclick="saveSchedule()" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Save</button>
+              <button type="button" data-modal-hide="schedule-modal" class="ms-3 text-gray-500 bg-white hover:bg-gray-100 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5">Cancel</button>
+          </div>
+      </div>
+  </div>
+</div>

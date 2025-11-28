@@ -1,0 +1,124 @@
+<div class="prose dark:prose-invert max-w-none">
+  <h2>Help & Documentation</h2>
+  <p>
+    This guide provides an overview of the different sections of the
+    SecOps Inventory Platform.
+  </p>
+
+  <h4>Setup Tab</h4>
+  <p>
+    This is the main landing page where you manage your tenants. A
+    tenant is typically a GCP Project that has a SecOps instance. From
+    here, you can:
+  </p>
+  <ul>
+    <li>View all discovered or manually added tenants.</li>
+    <li>
+      See whether a tenant has been configured with the necessary API
+      credentials.
+    </li>
+    <li>
+      Click <strong>Configure</strong> to add or update a tenant's
+      details, including SecOps Customer ID, region, and API keys for
+      services like SOAR and BindPlane.
+    </li>
+    <li>
+      Click <strong>Test</strong> to verify that the application can
+      successfully connect to the Chronicle API for that tenant.
+    </li>
+  </ul>
+
+  <h4>Chronicle API Tab</h4>
+  <p>
+    This tab provides a raw interface for making ad-hoc requests to
+    the Chronicle API for a selected, configured tenant. It's a useful
+    tool for exploring the API or for debugging.
+  </p>
+
+  <h4>Audits Tab</h4>
+  <p>
+    This is where you run audits against your tenants. The process is
+    simple:
+  </p>
+  <ol>
+    <li>Select a configured tenant from the dropdown menu.</li>
+    <li>
+      The list of available audits will be displayed, grouped by
+      category.
+    </li>
+    <li>Check the boxes for the audits you wish to run.</li>
+    <li>
+      Click <strong>Run Selected Audits</strong>. The results will
+      appear in the text box below.
+    </li>
+    <li>
+      Once you have successful audit runs, you can click
+      <strong>Generate Report</strong> to create a human-readable
+      summary using the AI model, or <strong>Create Schedule</strong> to set up recurring audits or reports.
+    </li>
+  </ol>
+
+  <h4>Insights Tab</h4>
+  <p>
+    Insights allow you to correlate data from multiple different audit
+    sources into a single AI-driven analysis. For example, you could
+    create an Insight that looks at both Chronicle rules and SOAR
+    playbooks. You can create, edit, and run Insight templates from
+    this page.
+  </p>
+
+  <h4>Schedules Tab</h4>
+<p>
+  The Schedules tab allows you to automate repetitive tasks by creating scheduled jobs. You can define:
+</p>
+<ul>
+  <li><strong>Schedule Name:</strong> A descriptive name for your scheduled job.</li>
+  <li><strong>Tenant:</strong> The specific tenant (GCP Project) against which the schedule will run.</li>
+  <li><strong>Schedule Type:</strong>
+    <ul>
+      <li><strong>Run Audits:</strong> Executes a selected set of audits.</li>
+      <li><strong>Generate Report:</strong> Generates an AI-summarized report from selected audits.</li>
+      <li><strong>Run Diff:</strong> Automatically compares the last two successful runs of selected audits and generates a consolidated diff report, highlighting only configuration changes.</li>
+    </ul>
+  </li>
+  <li><strong>Audits to Include:</strong> Which audits will be part of this schedule (relevant for all schedule types).</li>
+  <li><strong>Cron Schedule:</strong> A standard cron expression to define when the job should run (e.g., "0 1 * * *" for daily at 1 AM).</li>
+  <li><strong>Report Name Format (for Reports and Diffs):</strong> A customizable name format for the generated reports.</li>
+  <li><strong>Enable/Disable:</strong> Toggle the schedule's active status.</li>
+</ul>
+
+<h4>Settings Tab</h4>
+  <p>This tab contains advanced configuration options:</p>
+  <ul>
+    <li>
+      <strong>LLM Report Customization:</strong> Customize the prompt
+      and exclude specific data fields for each audit before it's sent
+      to the AI model for report generation. This allows you to
+      fine-tune the focus of your reports.
+    </li>
+    <li>
+      <strong>Custom YL2 Queries:</strong> Create and manage your own
+      YARA-L 2.0 queries, which will then appear as runnable audits in
+      the Audits tab.
+    </li>
+    <li>
+      <strong>Configurable Audits:</strong> Add or modify audit
+      definitions to target different APIs (Chronicle, SOAR,
+      BindPlane) and endpoints.
+    </li>
+  </ul>
+
+  <h4>Reports Tab</h4>
+  <p>
+    This page lists all the AI-generated reports you have created, including regular summaries and diff reports that highlight configuration changes. You
+    can view, copy, or delete them from here.
+  </p>
+  <h4>MCP Assistant Tab</h4>
+  <p>
+    This provides a conversational AI interface for interacting with
+    the application's data. You can ask it questions in natural
+    language (e.g., "how many tenants are configured?") or use slash
+    commands for direct tool execution (e.g.,
+    <code>/list_tenants</code>).
+  </p>
+</div>

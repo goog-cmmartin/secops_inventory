@@ -1,0 +1,227 @@
+<div
+  class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+  id="settings"
+  role="tabpanel"
+  aria-labelledby="settings-tab"
+>
+  <!-- Settings Tabs -->
+  <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+    <ul
+      class="flex flex-wrap -mb-px text-sm font-medium text-center"
+      id="settingsTab"
+      data-tabs-toggle="#settingsTabContent"
+      role="tablist"
+    >
+      <li class="mr-2" role="presentation">
+        <button
+          class="inline-block p-4 border-b-2 rounded-t-lg"
+          id="llm-settings-tab"
+          data-tabs-target="#llm-settings"
+          type="button"
+          role="tab"
+          aria-controls="llm-settings"
+          aria-selected="false"
+        >
+          LLM Report Customization
+        </button>
+      </li>
+      <li class="mr-2" role="presentation">
+        <button
+          class="inline-block p-4 border-b-2 rounded-t-lg"
+          id="yl2-settings-tab"
+          data-tabs-target="#yl2-settings"
+          type="button"
+          role="tab"
+          aria-controls="yl2-settings"
+          aria-selected="false"
+        >
+          Custom YL2 Queries
+        </button>
+      </li>
+      <li class="mr-2" role="presentation">
+        <button
+          class="inline-block p-4 border-b-2 rounded-t-lg"
+          id="configurable-audits-tab"
+          data-tabs-target="#configurable-audits"
+          type="button"
+          role="tab"
+          aria-controls="configurable-audits"
+          aria-selected="false"
+        >
+          Configurable Audits
+        </button>
+      </li>
+      <li class="mr-2" role="presentation">
+        <button
+          class="inline-block p-4 border-b-2 rounded-t-lg"
+          id="data-management-tab"
+          data-tabs-target="#data-management"
+          type="button"
+          role="tab"
+          aria-controls="data-management"
+          aria-selected="false"
+        >
+          Data Management
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div id="settingsTabContent">
+    <!-- LLM Report Customization -->
+    <div
+      class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+      id="llm-settings"
+      role="tabpanel"
+      aria-labelledby="llm-settings-tab"
+    >
+      <div class="grid grid-cols-2 gap-4 mb-4">
+        <div>
+          <label for="llm-audit-filter-input" class="sr-only">Filter audits</label>
+          <input
+            type="text"
+            id="llm-audit-filter-input"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            placeholder="Filter audits by name..."
+          />
+        </div>
+        <div class="flex items-end justify-end">
+          <button
+            type="button"
+            onclick="saveLlmSettings()"
+            class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center h-fit"
+          >
+            Save All Changes
+          </button>
+        </div>
+      </div>
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table id="llm-settings-table" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" class="px-6 py-3">Audit Name</th>
+              <th scope="col" class="px-6 py-3">Category</th>
+              <th scope="col" class="px-6 py-3">Has Prompt</th>
+              <th scope="col" class="px-6 py-3">Excluded Fields</th>
+              <th scope="col" class="px-6 py-3">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="llm-settings-tbody">
+            <!-- Rows will be populated here -->
+          </tbody>
+        </table>
+        <div id="llm-settings-spinner" class="hidden flex justify-center items-center p-8" role="status">
+            <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0492C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+            </svg>
+            <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </div>
+    <!-- Custom YL2 Queries -->
+    <div
+      class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+      id="yl2-settings"
+      role="tabpanel"
+      aria-labelledby="yl2-settings-tab"
+    >
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="font-semibold text-lg text-gray-900 dark:text-white">
+          Manage Custom YL2 Queries
+        </h3>
+        <button
+          type="button"
+          onclick="openYl2Modal()"
+          class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+        >
+          Create New Query
+        </button>
+      </div>
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table
+          class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+        >
+          <thead
+            class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+          >
+            <tr>
+              <th scope="col" class="px-6 py-3">Name</th>
+              <th scope="col" class="px-6 py-3">Category</th>
+              <th scope="col" class="px-6 py-3">Time Range</th>
+              <th scope="col" class="px-6 py-3">Action</th>
+            </tr>
+          </thead>
+          <tbody id="yl2-queries-table">
+            <!-- Custom query rows will be inserted here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Configurable Audits -->
+    <div
+      class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+      id="configurable-audits"
+      role="tabpanel"
+      aria-labelledby="configurable-audits-tab"
+    >
+          <div class="flex items-center justify-between pb-4">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Manage Configurable Audits</h3>
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center">
+                    <input id="show-all-fields-radio" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600">
+                    <label for="show-all-fields-radio" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Show All Fields</label>
+                </div>
+                <input type="text" id="configurable-audit-filter-input" placeholder="Filter audits..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white">
+                <button id="create-audit-btn" onclick="openConfigurableAuditModal()" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Create Audit</button>
+                <button id="export-audits-btn" onclick="exportAudits()" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800">Export</button>
+            </div>
+          </div>
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+              <table
+                class="w-full text-sm text-left text-gray-500 dark:text-gray-400"                >
+          <thead id="configurable-audits-thead"
+            class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+          >
+            <tr>
+              <th scope="col" class="px-6 py-3">Name</th>
+              <th scope="col" class="px-6 py-3">Category</th>
+              <th scope="col" class="px-6 py-3">Type</th>
+              <th scope="col" class="px-6 py-3">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="configurable-audits-table">
+            <!-- Configurable audit rows will be inserted here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Data Management -->
+    <div
+      class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+      id="data-management"
+      role="tabpanel"
+      aria-labelledby="data-management-tab"
+    >
+      <h3 class="font-semibold text-lg text-gray-900 dark:text-white mb-4">
+        Purge Old Audit Records
+      </h3>
+      <div class="max-w-md space-y-4">
+        <div>
+          <label for="purge-audit-select" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Audit to Purge</label>
+          <select id="purge-audit-select" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white">
+            <option value="">All Audits</option>
+          </select>
+        </div>
+        <div>
+          <label for="purge-days-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Delete records older than (days)</label>
+          <input type="number" id="purge-days-input" value="90" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+        </div>
+        <div>
+          <button type="button" onclick="purgeOldAudits()" class="text-white bg-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+            Purge Old Audits
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

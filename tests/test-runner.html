@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SecOps Inventory - Test Suite</title>
+  <link rel="stylesheet" href="lib/qunit-2.20.1.css">
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="lib/qunit-2.20.1.js"></script>
+
+    <!-- Source Files -->
+    <script src="../static/js/tenants.js"></script>
+    <script src="../static/js/llm_settings.js"></script>
+    <script src="../static/js/insights.js"></script>
+    <script src="../static/js/yl2_queries.js"></script>
+    <script src="../static/js/audits.js"></script>
+
+    <!-- Your tests here -->
+    <script src="js/smoke.test.js"></script>
+    <script src="js/reports.test.js"></script>
+    <script src="js/tenants.test.js"></script>
+    <script src="js/llm_settings.test.js"></script>
+    <script src="js/yl2_queries.test.js"></script>
+    <script src="js/audits.test.js"></script>
+    <script src="js/api.test.js"></script>
+    <script src="js/mcp.test.js"></script>
+  </body>
+</html>

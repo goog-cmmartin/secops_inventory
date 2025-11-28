@@ -1,0 +1,16 @@
+fastapi
+google-api-python-client
+Jinja2
+networkx
+protobuf
+pydantic
+pyvis
+requests
+SQLAlchemy
+uvicorn
+google-generativeai
+google-cloud-asset
+celery
+redis
+google-auth
+croniter
